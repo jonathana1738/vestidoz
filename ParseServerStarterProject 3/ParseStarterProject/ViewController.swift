@@ -70,6 +70,7 @@ var signupMode = true
                     }else{
                         // there isn't an error
                         print("user Signed up")
+                       self.performSegue(withIdentifier: "showFeed", sender: self)
                     }
                 })
                 
@@ -90,6 +91,7 @@ var signupMode = true
                     }else{
                         // if no error
                         print("logged in")
+                        self.performSegue(withIdentifier: "showFeed", sender: self)
                         
                     }
                 })
@@ -126,7 +128,14 @@ var signupMode = true
     
     @IBOutlet var messageLabel: UILabel!
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        if PFUser.current() != nil {
+            self.performSegue(withIdentifier: "showFeed", sender: self)
+        }
+        
+        self.navigationController?.navigationBar.isHidden = true
+    }
+
    
     
     
