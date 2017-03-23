@@ -87,7 +87,7 @@ class PostViewController: UIViewController,UITextFieldDelegate,UINavigationContr
     
     @IBAction func PostButton(_ sender: Any) {
         
-        activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
@@ -95,6 +95,7 @@ class PostViewController: UIViewController,UITextFieldDelegate,UINavigationContr
         activityIndicator.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
         
+        //
         
         let post = PFObject (className: "Posts")
       //  post["email Address"] =
@@ -106,9 +107,12 @@ class PostViewController: UIViewController,UITextFieldDelegate,UINavigationContr
         post["Fit"] = FitTextField.text
         post["Fabric"] = FabricTextField.text
         post["WashingPrfrnce"] = WashingPrefTextField.text
-        let FrontImageData = UIImagePNGRepresentation(FchosenPic.image!)
+        let FrontImageData = UIImageJPEGRepresentation(self.FchosenPic.image!, 0.5)
+        let BackImageData = UIImageJPEGRepresentation(self.BchosenPic.image!, 0.5)
         let FrontImageFile = PFFile(name: "frontImg.png", data: FrontImageData!)
+        let BackImageFile = PFFile(name: "BackImg.png", data: BackImageData!)
         post["FrontImage"] = FrontImageFile
+         post["BackImage"] = BackImageFile
         post.saveInBackground { (success, error) in
             self.activityIndicator.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
@@ -124,6 +128,7 @@ class PostViewController: UIViewController,UITextFieldDelegate,UINavigationContr
                 self.FabricTextField.text = ""
                 self.WashingPrefTextField.text = ""
                 self.FchosenPic.image = UIImage(named: "frnt")
+                self.BchosenPic.image = UIImage(named: "nBack")
                   
             }
         }
