@@ -98,7 +98,37 @@ class PostViewController: UIViewController,UITextFieldDelegate,UINavigationContr
         //
         
         let post = PFObject (className: "Posts")
-      //  post["email Address"] =
+      
+        if BrandTextField.text == ""{
+            createAlert(title: "Error in form", message: "Please enter a Brand")
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }else if SizeTextField.text == ""{
+            createAlert(title: "Error in form", message: "Please enter a Size")
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+        } else if LengthTextField.text == ""{
+            createAlert(title: "Error in form", message: "Please enter a Length")
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }else if ColorTextField.text == ""{
+            createAlert(title: "Error in form", message: "Please enter a Color")
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }else if FitTextField.text == ""{
+            createAlert(title: "Error in form", message: "Please enter a Style")
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }else if FabricTextField.text == ""{
+            createAlert(title: "Error in form", message: "Please enter a Fabric")
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }else if WashingPrefTextField.text == ""{
+            createAlert(title: "Error in form", message: "Please enter a Washing Preference")
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }else{
+        post["isAvailable"] = true
         post["userID"] = PFUser.current()?.objectId!
         post ["Brand"] = BrandTextField.text
         post["Size"] = SizeTextField.text
@@ -135,7 +165,7 @@ class PostViewController: UIViewController,UITextFieldDelegate,UINavigationContr
         
         
     }
-    
+    }
     
     
     

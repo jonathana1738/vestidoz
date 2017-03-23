@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Swap.swift
 //  DresSwapMvp
 //
 //  Created by Jonathan on 3/19/17.
@@ -18,12 +18,15 @@ struct DressSwap {
     var fabric: String
     var washPref: String
     var typOFit : String
+    var FrontImage: UIImage
+    var BackImage : UIImage
+    
    
     
     
     
-    // This constructor is for: A non-anonymous public healing
-    init(Brand: String, Available: Bool,Size: Int, length: String,Color: String, fabric: String, washPref: String, typOFit: String) {
+    // This constructor is for a swap
+    init(Brand: String, Available: Bool,Size: Int, length: String,Color: String, fabric: String, washPref: String, typOFit: String, FrontImage: UIImage, BackImage: UIImage) {
         
         self.Brand = Brand
   
@@ -34,4 +37,6 @@ struct DressSwap {
         self.fabric = fabric
         self.washPref = washPref
         self.typOFit = typOFit
+        self.FrontImage = FrontImage
+        self.BackImage = BackImage
     }}
