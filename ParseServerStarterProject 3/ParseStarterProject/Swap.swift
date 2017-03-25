@@ -11,25 +11,25 @@ import Parse
 
 struct DressSwap {
     var Brand: String
-    var Available: Bool
+    var Available = true
     var Size: Int
     var length: String
     var Color: String
     var fabric: String
     var washPref: String
     var typOFit : String
-    var FrontImage: UIImage
-    var BackImage : UIImage
+    var FrontImage: PFFile
+    var BackImage : PFFile
+    var createdAt: Date
     
    
     
     
     
     // This constructor is for a swap
-    init(Brand: String, Available: Bool,Size: Int, length: String,Color: String, fabric: String, washPref: String, typOFit: String, FrontImage: UIImage, BackImage: UIImage) {
+    init(Brand: String,Available: Bool,Size: Int, length: String,Color: String, fabric: String, washPref: String, typOFit: String,FrontImage: PFFile, BackImage: PFFile ,createdAt: Date) {
         
         self.Brand = Brand
-  
         self.Available = Available
         self.Size = Size
         self.length = length
@@ -39,4 +39,5 @@ struct DressSwap {
         self.typOFit = typOFit
         self.FrontImage = FrontImage
         self.BackImage = BackImage
+        self.createdAt = createdAt as Date
     }}

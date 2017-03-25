@@ -130,17 +130,17 @@ class PostViewController: UIViewController,UITextFieldDelegate,UINavigationContr
         }else{
         post["isAvailable"] = true
         post["userID"] = PFUser.current()?.objectId!
-        post ["Brand"] = BrandTextField.text
-        post["Size"] = SizeTextField.text
+        post["Brand"] = BrandTextField.text
+        post["Size"] = Int(SizeTextField.text!)
         post["Length"] = LengthTextField.text
         post["Color"] = ColorTextField.text
         post["Fit"] = FitTextField.text
         post["Fabric"] = FabricTextField.text
         post["WashingPrfrnce"] = WashingPrefTextField.text
-        let FrontImageData = UIImageJPEGRepresentation(self.FchosenPic.image!, 0.5)
+       let FrontImageData = UIImageJPEGRepresentation(self.FchosenPic.image!, 0.5)
         let BackImageData = UIImageJPEGRepresentation(self.BchosenPic.image!, 0.5)
         let FrontImageFile = PFFile(name: "frontImg.png", data: FrontImageData!)
-        let BackImageFile = PFFile(name: "BackImg.png", data: BackImageData!)
+       let BackImageFile = PFFile(name: "BackImg.png", data: BackImageData!)
         post["FrontImage"] = FrontImageFile
          post["BackImage"] = BackImageFile
         post.saveInBackground { (success, error) in
@@ -178,6 +178,7 @@ class PostViewController: UIViewController,UITextFieldDelegate,UINavigationContr
         self.ColorTextField.delegate = self
         self.FitTextField.delegate = self
         self.FabricTextField.delegate = self
+        self.WashingPrefTextField.delegate = self
 
         // Do any additional setup after loading the view.
     }

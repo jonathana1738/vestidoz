@@ -7,11 +7,81 @@
 //
 
 import UIKit
+import Parse
+
 
 class FeedTableViewController: UITableViewController {
+    
+    
+    
+    
+    var imageFiles = [PFFile]()
+    var SwapArray = Array<DressSwap>()
+    var refresher: UIRefreshControl!
+    
+    func refresh() {
+        let query = PFQuery(className:"Posts")
+        query.order(byDescending: "createdAt")
+        query.limit = 10
+        query.findObjectsInBackground { (objects, error) -> Void in
+            
+            if error == nil {
+                self.SwapArray.removeAll()
+                
+                
+                for object in objects! {
+                    
+                    var Swap: DressSwap
+                    
+  
+                  
+                   Swap = DressSwap(Brand: object["Brand"] as! String,
+                  Available: (object["isAvailable"] as! Bool),
+                   Size: (object["Size"] as! Int),
+                    length: object["Length"] as! String,
+                     Color: object["Color"] as! String,
+                   fabric: object["Fabric"] as! String,
+                   washPref: object["WashingPrfrnce"] as! String,
+                 typOFit: object["Fit"] as! String,
+                   FrontImage: object["FrontImage"] as!PFFile,
+                   BackImage: object["BackImage"] as! PFFile,
+                 createdAt: object.createdAt!)
+                
+                self.SwapArray.append(Swap)
+                }
+                
+                print("Count: " + String(self.SwapArray.count))
+                print(String(describing: self.SwapArray[0]))
+                
+                // Reload tableview
+                self.tableView.reloadData()
+            } else {
+                print(error)
+            }
+            
+            self.refresher.endRefreshing()
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        
+        refresher = UIRefreshControl()
+        refresher.attributedTitle = NSAttributedString(string: "Refreshing...")
+        refresher.addTarget(self, action: #selector(FeedTableViewController.refresh), for: UIControlEvents.valueChanged)
+        self.tableView.addSubview(refresher)
+        
+        refresh()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -34,14 +104,31 @@ class FeedTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return SwapArray.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
-       cell.textLabel?.text = "Test"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeedTableViewCell
+//        
+//        imageFiles[indexPath.row].getDataInBackground { (data, error) in
+//            
+//            if let imageData = data{
+//            if let downloadedImage = UIImage(data: imageData){
+//                cell.DressImages.image = downloadedImage
+//            }
+//            }
+//        }
+       // cell.DressImages.image = self.SwapArray[indexPath.row].FrontImage
+        //cell.DressImages.image = UIImage(named: "pink")
+        cell.BrandLabel.text = "Brand: " + String(self.SwapArray[indexPath.row].Brand)
+      cell.SizeLabel.text = "Size: " + String(self.SwapArray[indexPath.row].Size)
+        cell.LengthLabel.text = "Length: " + String(self.SwapArray[indexPath.row].length)
+        cell.MaterialLabel.text = "Material: " + String(self.SwapArray[indexPath.row].fabric)
+        cell.WashingPrfLabel.text = "Washing Preference: " + String(self.SwapArray[indexPath.row].washPref)
+        cell.TypeOfFitLabel.text = "Style: " + String(self.SwapArray[indexPath.row].typOFit)
+        cell.ColorLabel.text = "Color: " + String(self.SwapArray[indexPath.row].Color)
+      
 
         return cell
     }

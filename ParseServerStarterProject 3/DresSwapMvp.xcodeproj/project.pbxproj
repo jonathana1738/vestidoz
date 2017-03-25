@@ -19,6 +19,8 @@
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		AB2B154A1E7F1D1400B5CEF7 /* Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B15491E7F1D1400B5CEF7 /* Swap.swift */; };
 		AB2B154C1E84695000B5CEF7 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B154B1E84695000B5CEF7 /* FeedTableViewController.swift */; };
+		AB2B154E1E84814A00B5CEF7 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B154D1E84814A00B5CEF7 /* FeedTableViewCell.swift */; };
+		AB2B15501E848FB800B5CEF7 /* SwapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B154F1E848FB800B5CEF7 /* SwapViewController.swift */; };
 		AB4B272A1E7DBDD600C55BAF /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4B27291E7DBDD600C55BAF /* PostViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		AB2B15491E7F1D1400B5CEF7 /* Swap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swap.swift; sourceTree = "<group>"; };
 		AB2B154B1E84695000B5CEF7 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
+		AB2B154D1E84814A00B5CEF7 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedTableViewCell.swift; path = ../Resources/FeedTableViewCell.swift; sourceTree = "<group>"; };
+		AB2B154F1E848FB800B5CEF7 /* SwapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapViewController.swift; sourceTree = "<group>"; };
 		AB4B27291E7DBDD600C55BAF /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +98,8 @@
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 				AB2B154B1E84695000B5CEF7 /* FeedTableViewController.swift */,
+				AB2B154F1E848FB800B5CEF7 /* SwapViewController.swift */,
+				AB2B154D1E84814A00B5CEF7 /* FeedTableViewCell.swift */,
 				AB2B15491E7F1D1400B5CEF7 /* Swap.swift */,
 			);
 			path = ParseStarterProject;
@@ -195,6 +201,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB2B154A1E7F1D1400B5CEF7 /* Swap.swift in Sources */,
+				AB2B154E1E84814A00B5CEF7 /* FeedTableViewCell.swift in Sources */,
+				AB2B15501E848FB800B5CEF7 /* SwapViewController.swift in Sources */,
 				AB4B272A1E7DBDD600C55BAF /* PostViewController.swift in Sources */,
 				AB2B154C1E84695000B5CEF7 /* FeedTableViewController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
