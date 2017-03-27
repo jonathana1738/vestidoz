@@ -17,7 +17,7 @@
 		81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81781A49E0DB00E65899 /* AudioToolbox.framework */; };
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
-		AB2B154A1E7F1D1400B5CEF7 /* Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B15491E7F1D1400B5CEF7 /* Swap.swift */; };
+		AB2B154A1E7F1D1400B5CEF7 /* DressInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B15491E7F1D1400B5CEF7 /* DressInfo.swift */; };
 		AB2B154C1E84695000B5CEF7 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B154B1E84695000B5CEF7 /* FeedTableViewController.swift */; };
 		AB2B154E1E84814A00B5CEF7 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B154D1E84814A00B5CEF7 /* FeedTableViewCell.swift */; };
 		AB2B15501E848FB800B5CEF7 /* SwapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B154F1E848FB800B5CEF7 /* SwapViewController.swift */; };
@@ -39,7 +39,7 @@
 		81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
-		AB2B15491E7F1D1400B5CEF7 /* Swap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swap.swift; sourceTree = "<group>"; };
+		AB2B15491E7F1D1400B5CEF7 /* DressInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DressInfo.swift; sourceTree = "<group>"; };
 		AB2B154B1E84695000B5CEF7 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		AB2B154D1E84814A00B5CEF7 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedTableViewCell.swift; path = ../Resources/FeedTableViewCell.swift; sourceTree = "<group>"; };
 		AB2B154F1E848FB800B5CEF7 /* SwapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 				AB2B154B1E84695000B5CEF7 /* FeedTableViewController.swift */,
 				AB2B154F1E848FB800B5CEF7 /* SwapViewController.swift */,
 				AB2B154D1E84814A00B5CEF7 /* FeedTableViewCell.swift */,
-				AB2B15491E7F1D1400B5CEF7 /* Swap.swift */,
+				AB2B15491E7F1D1400B5CEF7 /* DressInfo.swift */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -200,7 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB2B154A1E7F1D1400B5CEF7 /* Swap.swift in Sources */,
+				AB2B154A1E7F1D1400B5CEF7 /* DressInfo.swift in Sources */,
 				AB2B154E1E84814A00B5CEF7 /* FeedTableViewCell.swift in Sources */,
 				AB2B15501E848FB800B5CEF7 /* SwapViewController.swift in Sources */,
 				AB4B272A1E7DBDD600C55BAF /* PostViewController.swift in Sources */,

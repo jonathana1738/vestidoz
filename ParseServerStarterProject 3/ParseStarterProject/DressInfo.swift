@@ -1,5 +1,5 @@
 //
-//  Swap.swift
+//  DressInfo.swift
 //  DresSwapMvp
 //
 //  Created by Jonathan on 3/19/17.

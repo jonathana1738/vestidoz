@@ -169,7 +169,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Front"/>
                                             <connections>
-                                                <action selector="FrontButton:" destination="KjM-4h-mNn" eventType="touchUpInside" id="uCX-ta-T4f"/>
+                                                <action selector="FrontButton:" destination="KjM-4h-mNn" eventType="touchUpInside" id="bjG-cr-CGI"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGI-tL-aMr">
@@ -241,13 +241,13 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Back"/>
                                             <connections>
-                                                <action selector="BackButton:" destination="KjM-4h-mNn" eventType="touchUpInside" id="PMH-Tg-ltT"/>
+                                                <action selector="BackButton:" destination="KjM-4h-mNn" eventType="touchUpInside" id="QSt-x1-vsQ"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="BrandLabel" destination="JGI-tL-aMr" id="jyV-7V-aVf"/>
+                                    <outlet property="BrandLabel" destination="JGI-tL-aMr" id="VgF-y1-iwW"/>
                                     <outlet property="ColorLabel" destination="xCn-Wd-lGi" id="alG-6S-ueG"/>
                                     <outlet property="DressImages" destination="9pK-Xk-nQl" id="sJh-a1-lUj"/>
                                     <outlet property="LengthLabel" destination="3SK-JC-u95" id="Oya-0e-jcq"/>
@@ -538,8 +538,8 @@
         <image name="nBack" width="374" height="696"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0BB-jU-YVu"/>
-        <segue reference="Kfh-xU-JVZ"/>
         <segue reference="lyf-rK-LbV"/>
+        <segue reference="1kF-OA-YCY"/>
+        <segue reference="0BB-jU-YVu"/>
     </inferredMetricsTieBreakers>
 </document>

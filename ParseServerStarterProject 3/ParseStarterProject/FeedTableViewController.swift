@@ -12,14 +12,22 @@ import Parse
 
 class FeedTableViewController: UITableViewController {
     
+   
     
+    var DressFront = UIImage()
+    var DressBack = UIImage()
     
+ 
     
-    var imageFiles = [PFFile]()
+  
+    var imageF =  Array<PFFile>()
+    var imageB =  Array<PFFile>()
     var SwapArray = Array<DressSwap>()
     var refresher: UIRefreshControl!
     
     func refresh() {
+        
+        
         let query = PFQuery(className:"Posts")
         query.order(byDescending: "createdAt")
         query.limit = 10
@@ -46,7 +54,6 @@ class FeedTableViewController: UITableViewController {
                    FrontImage: object["FrontImage"] as!PFFile,
                    BackImage: object["BackImage"] as! PFFile,
                  createdAt: object.createdAt!)
-                
                 self.SwapArray.append(Swap)
                 }
                 
@@ -108,17 +115,126 @@ class FeedTableViewController: UITableViewController {
     }
 
     
+    
+    
+        
+
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeedTableViewCell
-//        
-//        imageFiles[indexPath.row].getDataInBackground { (data, error) in
+        print(self.imageF.count)
+    
+        imageF.append(SwapArray[indexPath.row].FrontImage)
+        imageB.append(SwapArray[indexPath.row].BackImage)
+        
+        
+       
+       
+            imageF[indexPath.row].getDataInBackground { (data, error) in
+            
+                if let downloadedImage = UIImage(data: data!){
+                   self.DressFront = downloadedImage
+                     cell.DressImages.image = downloadedImage
+                }
+           }
+            
+      
 //            
-//            if let imageData = data{
-//            if let downloadedImage = UIImage(data: imageData){
-//                cell.DressImages.image = downloadedImage
+//            imageB[indexPath.row].getDataInBackground { (data, error) in
+//                
+//                if let downloadedImage = UIImage(data: data!){
+//                    cell.DressImages.image = downloadedImage
+//                
+//                }
+//
+//            
+//            
 //            }
+//      
+//        
+        
+        
+        
+
+        
+        
+        // retrive 1 image, save to the struct as UIMAGE
+//       let FrontPicture = ["FrontImage"] as! PFFile
+//        FrontPicture.getDataInBackground { (data, error) in
+//            if let imageData = data{
+//                let FrontPicture = UIImage(data:imageData)
+//                cell.DressImages.image = FrontPicture
+//                
 //            }
 //        }
+    
+    
+        
+        
+        // then convert the pffile to a image
+        // then display the image
+        
+        // retrive 2 images
+        // then convert the pffile to a image
+        // then display the images
+        
+        
+        
+//        let findData = PFQuery(className: "Posts")
+//        findData.findObjectsInBackground { (objects, error) in
+//            
+//            if (error == nil) {
+//                
+//                for object in objects!{
+//                    let FrontPicture = object ["FrontImage"] as! PFFile
+//                    let BackPicture = object ["BackImage"] as! PFFile
+//                    
+//                    FrontPicture.getDataInBackground(block: { (data, error) in
+//                         self.FrontImaged = true
+//                        if let imageData = data{
+//                           
+//                            if self.FrontImaged{
+//                        let FrontPicture = UIImage(data:imageData)
+//                            cell.DressImages.image = FrontPicture
+//                                
+//                        }
+//                              self.FrontImaged = false
+//                        }
+//                    })
+//                    
+//                    BackPicture.getDataInBackground(block: { (data, error) in
+//                       self.BackImaged = true
+//                        if let imageData = data{
+//                            if self.BackImaged{
+//                            let BackPicture = UIImage(data:imageData)
+//                            cell.DressImages.image = BackPicture
+//                            }
+//                            self.BackImaged = false
+//                        }
+//                    })
+
+                  
+//                    
+//                }
+//                
+//}
+//
+//            }
+        
+        
+
+//         imageFiles[indexPath.row].getDataInBackground { (data, error) in
+//
+//          if let imageData = data{
+//          if let downloadedImage = UIImage(data: imageData){
+//        cell.DressImages.image = downloadedImage
+//    
+//           //print(downloadedImage)
+//          }
+//          }
+//   }
+
        // cell.DressImages.image = self.SwapArray[indexPath.row].FrontImage
         //cell.DressImages.image = UIImage(named: "pink")
         cell.BrandLabel.text = "Brand: " + String(self.SwapArray[indexPath.row].Brand)
