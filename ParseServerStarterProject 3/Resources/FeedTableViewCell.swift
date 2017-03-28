@@ -10,19 +10,12 @@ import UIKit
 
 
 class FeedTableViewCell: UITableViewCell {
+    
+    @IBOutlet var ScrollView: UIScrollView!
 
      var FrontImaged = true
-    @IBAction func FrontButton(_ sender: Any) {
-        FrontImaged = true
-        
-        
-        
-    }
-
-    @IBAction func BackButton(_ sender: Any) {
-        FrontImaged = false
-    }
-    @IBOutlet var DressImages: UIImageView!
+    
+       @IBOutlet var DressImages: UIImageView!
     
     
     @IBOutlet var BrandLabel: UILabel!
@@ -43,6 +36,7 @@ class FeedTableViewCell: UITableViewCell {
     
 
     override func setSelected(_ selected: Bool, animated: Bool) {
+        //ScrollView.contentSize.width = ScrollView.frame.width //* CGFloat(i + 1)
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

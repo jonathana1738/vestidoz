@@ -16,8 +16,9 @@ class FeedTableViewController: UITableViewController {
     
     var DressFront = UIImage()
     var DressBack = UIImage()
+    var FrontImaged = true
     
- 
+var imageArray = [UIImage]()
     
   
     var imageF =  Array<PFFile>()
@@ -35,6 +36,7 @@ class FeedTableViewController: UITableViewController {
             
             if error == nil {
                 self.SwapArray.removeAll()
+            self.imageArray.removeAll()
                 
                 
                 for object in objects! {
@@ -54,11 +56,12 @@ class FeedTableViewController: UITableViewController {
                    FrontImage: object["FrontImage"] as!PFFile,
                    BackImage: object["BackImage"] as! PFFile,
                  createdAt: object.createdAt!)
+                   
                 self.SwapArray.append(Swap)
                 }
                 
-                print("Count: " + String(self.SwapArray.count))
-                print(String(describing: self.SwapArray[0]))
+               // print("Count: " + String(self.SwapArray.count))
+               // print(String(describing: self.SwapArray[0]))
                 
                 // Reload tableview
                 self.tableView.reloadData()
@@ -80,8 +83,8 @@ class FeedTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        
+       self.tableView.reloadData()
+     
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: "Refreshing...")
         refresher.addTarget(self, action: #selector(FeedTableViewController.refresh), for: UIControlEvents.valueChanged)
@@ -123,120 +126,54 @@ class FeedTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeedTableViewCell
-        print(self.imageF.count)
+        //print(self.imageF.count)
     
         imageF.append(SwapArray[indexPath.row].FrontImage)
         imageB.append(SwapArray[indexPath.row].BackImage)
         
         
-       
+        
        
             imageF[indexPath.row].getDataInBackground { (data, error) in
-            
+                
                 if let downloadedImage = UIImage(data: data!){
-                   self.DressFront = downloadedImage
-                     cell.DressImages.image = downloadedImage
+                    self.DressFront = downloadedImage
+            }
+        
+        }
+        
+            imageB[indexPath.row].getDataInBackground { (data, error) in
+               
+              if let downloadedImaged = UIImage(data: data!){
+                self.DressBack = downloadedImaged
+                
                 }
-           }
+               
+                
+           // at this point image array[0] should contain the frontimage, and image array[1] should contain the back image
+      }
+        
+        
+      self.imageArray.append(self.DressBack)
+        self.imageArray.append(self.DressFront)
+        print(self.imageArray.count)
+        
+        for i in 0 ..< imageArray.count{
+            cell.DressImages.image = imageArray[i]
+            cell.DressImages.contentMode = .scaleAspectFit
+            let xPosition = cell.DressImages.frame.width * CGFloat(i)
+            //cell.DressImages.frame = CGRect(x: xPosition, y: 0, width: cell.ScrollView.frame.width, height: cell.ScrollView.frame.height)
+            cell.ScrollView.contentSize.width = cell.ScrollView.frame.width * CGFloat(i + 1)
             
-      
-//            
-//            imageB[indexPath.row].getDataInBackground { (data, error) in
-//                
-//                if let downloadedImage = UIImage(data: data!){
-//                    cell.DressImages.image = downloadedImage
-//                
-//                }
-//
-//            
-//            
-//            }
-//      
-//        
-        
+        }
         
         
 
         
-        
-        // retrive 1 image, save to the struct as UIMAGE
-//       let FrontPicture = ["FrontImage"] as! PFFile
-//        FrontPicture.getDataInBackground { (data, error) in
-//            if let imageData = data{
-//                let FrontPicture = UIImage(data:imageData)
-//                cell.DressImages.image = FrontPicture
-//                
-//            }
-//        }
-    
-    
-        
-        
-        // then convert the pffile to a image
-        // then display the image
-        
-        // retrive 2 images
-        // then convert the pffile to a image
-        // then display the images
-        
-        
-        
-//        let findData = PFQuery(className: "Posts")
-//        findData.findObjectsInBackground { (objects, error) in
-//            
-//            if (error == nil) {
-//                
-//                for object in objects!{
-//                    let FrontPicture = object ["FrontImage"] as! PFFile
-//                    let BackPicture = object ["BackImage"] as! PFFile
-//                    
-//                    FrontPicture.getDataInBackground(block: { (data, error) in
-//                         self.FrontImaged = true
-//                        if let imageData = data{
-//                           
-//                            if self.FrontImaged{
-//                        let FrontPicture = UIImage(data:imageData)
-//                            cell.DressImages.image = FrontPicture
-//                                
-//                        }
-//                              self.FrontImaged = false
-//                        }
-//                    })
-//                    
-//                    BackPicture.getDataInBackground(block: { (data, error) in
-//                       self.BackImaged = true
-//                        if let imageData = data{
-//                            if self.BackImaged{
-//                            let BackPicture = UIImage(data:imageData)
-//                            cell.DressImages.image = BackPicture
-//                            }
-//                            self.BackImaged = false
-//                        }
-//                    })
-
-                  
-//                    
-//                }
-//                
-//}
-//
-//            }
-        
-        
-
-//         imageFiles[indexPath.row].getDataInBackground { (data, error) in
-//
-//          if let imageData = data{
-//          if let downloadedImage = UIImage(data: imageData){
-//        cell.DressImages.image = downloadedImage
-//    
-//           //print(downloadedImage)
-//          }
-//          }
-//   }
 
        // cell.DressImages.image = self.SwapArray[indexPath.row].FrontImage
         //cell.DressImages.image = UIImage(named: "pink")
+        cell.ScrollView.addSubview(cell.DressImages)
         cell.BrandLabel.text = "Brand: " + String(self.SwapArray[indexPath.row].Brand)
       cell.SizeLabel.text = "Size: " + String(self.SwapArray[indexPath.row].Size)
         cell.LengthLabel.text = "Length: " + String(self.SwapArray[indexPath.row].length)
