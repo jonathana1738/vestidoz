@@ -18,8 +18,10 @@ class FeedTableViewController: UITableViewController {
     var DressBack = UIImage()
     var FrontImaged = true
     
+
+   
 var imageArray = [UIImage]()
-    
+    var BackimageArray = [UIImage]()
   
     var imageF =  Array<PFFile>()
     var imageB =  Array<PFFile>()
@@ -30,9 +32,11 @@ var imageArray = [UIImage]()
         
         
         let query = PFQuery(className:"Posts")
+        query.whereKey("isAvailable", equalTo: true)
         query.order(byDescending: "createdAt")
         query.limit = 10
         query.findObjectsInBackground { (objects, error) -> Void in
+          
             
             if error == nil {
                 self.SwapArray.removeAll()
@@ -55,7 +59,8 @@ var imageArray = [UIImage]()
                  typOFit: object["Fit"] as! String,
                    FrontImage: object["FrontImage"] as!PFFile,
                    BackImage: object["BackImage"] as! PFFile,
-                 createdAt: object.createdAt!)
+                   createdAt: object.createdAt!,
+                   ObjectId: object.objectId!)
                    
                 self.SwapArray.append(Swap)
                 }
@@ -138,6 +143,7 @@ var imageArray = [UIImage]()
                 
                 if let downloadedImage = UIImage(data: data!){
                     self.DressFront = downloadedImage
+                    cell.DressImages.image = self.DressFront
             }
         
         }
@@ -146,41 +152,43 @@ var imageArray = [UIImage]()
                
               if let downloadedImaged = UIImage(data: data!){
                 self.DressBack = downloadedImaged
+                cell.BackImageView.image = self.DressBack
                 
                 }
                
                 
            // at this point image array[0] should contain the frontimage, and image array[1] should contain the back image
       }
-        
-        
-      self.imageArray.append(self.DressBack)
-        self.imageArray.append(self.DressFront)
-        print(self.imageArray.count)
-        
-        for i in 0 ..< imageArray.count{
-            cell.DressImages.image = imageArray[i]
-            cell.DressImages.contentMode = .scaleAspectFit
-            let xPosition = cell.DressImages.frame.width * CGFloat(i)
-            //cell.DressImages.frame = CGRect(x: xPosition, y: 0, width: cell.ScrollView.frame.width, height: cell.ScrollView.frame.height)
-            cell.ScrollView.contentSize.width = cell.ScrollView.frame.width * CGFloat(i + 1)
-            
-        }
+        //self.BackimageArray.append(DressBack)
+//        
+//      self.imageArray.append(self.DressBack)
+        //self.imageArray.append(DressFront)
+//        print(self.imageArray.count)
+//        
+//        for i in 0 ..< imageArray.count{
+//            cell.DressImages.image = imageArray[i]
+//            cell.DressImages.contentMode = .scaleAspectFit
+//            let xPosition = cell.DressImages.frame.width * CGFloat(i)
+//            //cell.DressImages.frame = CGRect(x: xPosition, y: 0, width: cell.ScrollView.frame.width, height: cell.ScrollView.frame.height)
+//            cell.ScrollView.contentSize.width = cell.ScrollView.frame.width * CGFloat(i + 1)
+//            
+//        }
         
         
 
         
-
+        //cell.BackImageView.image =  UIImage(named: "pink")
        // cell.DressImages.image = self.SwapArray[indexPath.row].FrontImage
         //cell.DressImages.image = UIImage(named: "pink")
-        cell.ScrollView.addSubview(cell.DressImages)
+        //cell.ScrollView.addSubview(cell.DressImages)
         cell.BrandLabel.text = "Brand: " + String(self.SwapArray[indexPath.row].Brand)
-      cell.SizeLabel.text = "Size: " + String(self.SwapArray[indexPath.row].Size)
+        cell.SizeLabel.text = "Size: " + String(self.SwapArray[indexPath.row].Size)
         cell.LengthLabel.text = "Length: " + String(self.SwapArray[indexPath.row].length)
         cell.MaterialLabel.text = "Material: " + String(self.SwapArray[indexPath.row].fabric)
         cell.WashingPrfLabel.text = "Washing Preference: " + String(self.SwapArray[indexPath.row].washPref)
         cell.TypeOfFitLabel.text = "Style: " + String(self.SwapArray[indexPath.row].typOFit)
         cell.ColorLabel.text = "Color: " + String(self.SwapArray[indexPath.row].Color)
+        cell.objectIDLabel.text = self.SwapArray[indexPath.row].ObjectId
       
 
         return cell

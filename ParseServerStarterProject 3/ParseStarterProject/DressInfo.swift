@@ -21,13 +21,14 @@ struct DressSwap {
     var FrontImage: PFFile
     var BackImage : PFFile
     var createdAt: Date
+    var ObjectId: String
     
    
     
     
     
     // This constructor is for a swap
-    init(Brand: String,Available: Bool,Size: Int, length: String,Color: String, fabric: String, washPref: String, typOFit: String,FrontImage: PFFile, BackImage: PFFile ,createdAt: Date) {
+    init(Brand: String,Available: Bool,Size: Int, length: String,Color: String, fabric: String, washPref: String, typOFit: String,FrontImage: PFFile, BackImage: PFFile ,createdAt: Date, ObjectId: String) {
         
         self.Brand = Brand
         self.Available = Available
@@ -40,4 +41,5 @@ struct DressSwap {
         self.FrontImage = FrontImage
         self.BackImage = BackImage
         self.createdAt = createdAt as Date
+        self.ObjectId = ObjectId
     }}
